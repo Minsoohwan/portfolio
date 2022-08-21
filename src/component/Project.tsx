@@ -1,6 +1,6 @@
-import React, { forwardRef, useEffect, useState } from 'react';
+import React, { forwardRef, useState } from 'react';
 import styled from 'styled-components';
-import { props, propsType, animationNumber } from '../type/type';
+import { props, propsType } from '../type/type';
 import { GoTriangleDown, GoTriangleRight } from 'react-icons/go';
 import { useInView } from 'react-intersection-observer';
 import { appear } from './AboutMe';
@@ -114,10 +114,7 @@ const Project = forwardRef<HTMLDivElement, propsType>((props, ref) => {
     const { isWidthSmall, isWidthLarge } = props;
     const [titleRef, inView] = useInView();
     const [contentRef, contentInView] = useInView();
-    const [viewState, setViewState] = useState<animationNumber>({
-        first: false,
-        second: false,
-    });
+
     const [isOpen, setIsOpen] = useState<{
         one: boolean;
         two: boolean;

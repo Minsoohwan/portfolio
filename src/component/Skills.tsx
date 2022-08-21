@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useState } from 'react';
+import React, { forwardRef } from 'react';
 import { useInView } from 'react-intersection-observer';
 import styled from 'styled-components';
 import { props, propsType } from '../type/type';

@@ -135,7 +135,7 @@ const Main = (props: propsType) => {
                 sixth: true,
             });
         }, 5000);
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
     return (
         <Section isWidthLarge={isWidthLarge} isWidthSmall={isWidthSmall}>
             {isWidthSmall ? (

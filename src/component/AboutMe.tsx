@@ -329,7 +329,7 @@ const AboutMe = forwardRef<HTMLDivElement, propsType>((props, ref) => {
                 });
             }, 1900);
         }
-    }, [about]);
+    }, [about]); // eslint-disable-line react-hooks/exhaustive-deps
     return (
         <Section
             ref={ref}
