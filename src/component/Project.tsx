@@ -35,9 +35,9 @@ const Title = styled.div`
     }
 `;
 const ProjectLayout = styled.div`
-    margin: auto;
+    margin: 20px auto;
     width: calc(100% - 20px);
-    height: 100%;
+    height: 70%;
     max-width: 1200px;
     overflow: ${(props: props) => (props.isWidthSmall ? 'hidden' : 'scroll')};
     ::-webkit-scrollbar {
@@ -57,7 +57,7 @@ const VideoBox = styled.div`
     width: ${(props: props) =>
         props.isWidthSmall ? '70%' : 'calc(100% - 20px)'};
     padding: 10px;
-    max-height: 100%;
+    max-height: ${(props: props) => (props.isWidthSmall ? '100%' : '')};
     overflow: ${(props: props) => (props.isWidthSmall ? 'auto' : 'visible')};
     ::-webkit-scrollbar {
         display: none;
@@ -66,18 +66,19 @@ const VideoBox = styled.div`
         width: 100%;
     }
     h3 {
-        margin-left: 15px;
         width: fit-content;
-        border-bottom: 3px solid;
+        border-bottom: 2px solid;
     }
     div {
+        margin-top: 10px;
         border-radius: 10px;
-        border: 5px outset #ffffff;
+        border: 3px solid #ffffff;
         white-space: pre-line;
         padding: 0 15px;
-        font-size: 13px;
         p {
             text-indent: 10px;
+            margin: 8px 0;
+            font-size: 14px;
         }
     }
 `;
@@ -96,17 +97,22 @@ const ExplainBox = styled.div`
         border: 5px outset #ffffff;
 
         p {
-            font-size: 13px;
+            font-size: 14px;
             text-indent: 10px;
+            white-space: pre-wrap;
         }
         h4 {
             display: flex;
             align-items: center;
             cursor: pointer;
         }
+        a {
+            font-weight: bold;
+            color: white;
+        }
     }
     h3 {
-        border-bottom: 3px solid;
+        border-bottom: 2px solid;
         width: fit-content;
     }
 `;
@@ -114,7 +120,19 @@ const Project = forwardRef<HTMLDivElement, propsType>((props, ref) => {
     const { isWidthSmall, isWidthLarge } = props;
     const [titleRef, inView] = useInView();
     const [contentRef, contentInView] = useInView();
-
+    const [skillsIsOpen, setSkillsIsOpen] = useState<{
+        one: boolean;
+        two: boolean;
+        three: boolean;
+        four: boolean;
+        five: boolean;
+    }>({
+        one: false,
+        two: false,
+        three: false,
+        four: false,
+        five: false,
+    });
     const [isOpen, setIsOpen] = useState<{
         one: boolean;
         two: boolean;
@@ -148,18 +166,30 @@ const Project = forwardRef<HTMLDivElement, propsType>((props, ref) => {
                         <source src="/video/JUSTDOIT.mp4" />
                     </video>
 
-                    <h3>프로젝트 개요</h3>
                     <div>
+                        <h3>프로젝트 개요</h3>
                         <p>
                             바쁜 일상 속 계획 수립과 이행이 어려운 사람들이 조금
                             더 재미있게 계획을 실천할 수 있도록 도와주는 웹
-                            서비스.
-                        </p>
-                        <p>
-                            캐릭터 성장 시스템을 통해 계획 이행에 대한
+                            서비스. 캐릭터 성장 시스템을 통해 계획 이행에 대한
                             동기부여가 되고, 커뮤니티를 통해 다른 사람들과
                             계획을 공유하고 채팅을 통해 대화하며 계획 실천에
                             즐거움을 더한다.
+                        </p>
+
+                        <h3>후기</h3>
+                        <p>
+                            이 프로젝트는 지금까지 공부해 온 React의 지식을 총
+                            정리한 프로젝트라고 생각한다. 기본적인 로그인
+                            Token관리부터 Refresh Token을 이용한 Access Token
+                            재발급, 무한스크롤, 실시간 채팅 등 경험할 수 있는
+                            기능은 거의 다 해본 것 같다.
+                        </p>
+                        <p>
+                            아직 공부를 하고있는 단계라 하드 코딩으로 하나하나
+                            작성하다보니 코드를 추상화하지 못한점이 아쉽다. 차차
+                            리펙토링을 통해 코드를 추상화하여 클린 코드를 만들기
+                            위해 조금 더 공부해야겠다는 생각이 들었다.
                         </p>
                     </div>
                 </VideoBox>
@@ -171,6 +201,141 @@ const Project = forwardRef<HTMLDivElement, propsType>((props, ref) => {
                             React, Typescript, Recoil, React-Query, SockJs,
                             Stomp.js, GithubAction, AWS S3
                         </p>
+                        <h4
+                            onClick={() =>
+                                setSkillsIsOpen({
+                                    ...skillsIsOpen,
+                                    one: !skillsIsOpen.one,
+                                })
+                            }
+                        >
+                            {skillsIsOpen.one ? (
+                                <GoTriangleDown />
+                            ) : (
+                                <GoTriangleRight />
+                            )}
+                            Typescript
+                        </h4>
+                        {skillsIsOpen.one && (
+                            <p>
+                                {
+                                    'JavsScript 기반 언어로 목적에 맞지 않는 타입 사용을 최소화 하여 코드 작성 단계에서 오류를 확인할 수 있고 버그의 사전 예방에 유용하기 때문에 기반 언어로 채택했습니다.'
+                                }
+                            </p>
+                        )}
+                        <h4
+                            onClick={() =>
+                                setSkillsIsOpen({
+                                    ...skillsIsOpen,
+                                    two: !skillsIsOpen.two,
+                                })
+                            }
+                        >
+                            {skillsIsOpen.two ? (
+                                <GoTriangleDown />
+                            ) : (
+                                <GoTriangleRight />
+                            )}
+                            React
+                        </h4>
+                        {skillsIsOpen.two && (
+                            <p>
+                                {
+                                    'JUST DO IT의 개발 Tool은 React입니다. React는 메타에서 개발한 open source library로 Dirty checking과 Virtual DOM을 활용하여 update가 필요한 DOM요소를 찾아 업데이트하기 때문에 re-rendering이 잦은 웹에서 효율적인 동작을 합니다. 또한 React-Hooks 메소드는 보다 편리한 개발 환경을 만들어줍니다.'
+                                }
+                            </p>
+                        )}
+                        <h4
+                            onClick={() =>
+                                setSkillsIsOpen({
+                                    ...skillsIsOpen,
+                                    three: !skillsIsOpen.three,
+                                })
+                            }
+                        >
+                            {skillsIsOpen.three ? (
+                                <GoTriangleDown />
+                            ) : (
+                                <GoTriangleRight />
+                            )}
+                            Recoil
+                        </h4>
+                        {skillsIsOpen.three && (
+                            <p>
+                                {
+                                    'JContext API 기반 전역 상태관리 library로 사용법이 간단합니다. Redux의 경우 사용하기 위해 action type, action create function, reducer 등 boiler plate가 많기 때문에 사용이 간편한 Recoil을 채택했습니다. 로그인 시 Token 저장과 Modal의 state를 부모 컴포넌트로 이동, React Query로 받아온 data를 전역으로 사용하기 위하여 사용했습니다.'
+                                }
+                            </p>
+                        )}
+                        <h4
+                            onClick={() =>
+                                setSkillsIsOpen({
+                                    ...skillsIsOpen,
+                                    four: !skillsIsOpen.four,
+                                })
+                            }
+                        >
+                            {skillsIsOpen.four ? (
+                                <GoTriangleDown />
+                            ) : (
+                                <GoTriangleRight />
+                            )}
+                            React Query
+                        </h4>
+                        {skillsIsOpen.four && (
+                            <p>
+                                {
+                                    '서버 상태관리 library로 기존 store의 data와 서버의 data가 달라 발생하는 오류를 없애고 오래된 정보를 다시 caching하여 빠른 데이터 반영을 위하여 사용했습니다.'
+                                }
+                            </p>
+                        )}
+                        <h4
+                            onClick={() =>
+                                setSkillsIsOpen({
+                                    ...skillsIsOpen,
+                                    five: !skillsIsOpen.five,
+                                })
+                            }
+                        >
+                            {skillsIsOpen.five ? (
+                                <GoTriangleDown />
+                            ) : (
+                                <GoTriangleRight />
+                            )}
+                            SockJs & Stomp.js
+                        </h4>
+                        {skillsIsOpen.five && (
+                            <>
+                                <p>
+                                    {
+                                        '-WebSocket은 http에서 지원하지 않는 양방향 실시간 스트리밍을 가능하게합니다. SockJS는 모든 최신 브라우저와 WebSocket 프로토콜을 지원하지 않는 환경에서 작동하기때문에 사용하였습니다.'
+                                    }
+                                </p>
+                                <p>
+                                    -Stomp.js는 Javascript환경에서 Stomp를
+                                    사용하게 해줍니다. stomp는 simple text
+                                    oriented messaging protocol의 약자로
+                                    메시지의 형식, 유형, 내용 등을 정의해줍니다.
+                                    Text, Binary 메시지 type만 정의하는
+                                    WebSocket에 비해 사용하기가 간단해
+                                    사용했습니다.
+                                </p>
+                            </>
+                        )}
+                        <h3>주요 기능</h3>
+                        <h4>Page</h4>
+                        <p style={{ textIndent: '0' }}>
+                            {
+                                '-TODO 작성/완료/삭제\n-TODO완료에 따른 캐릭터 레벨업/스텝업\n-1:1채팅/단체채팅\n-친구요청/수락/거절/삭제\n-친구페이지\n-커뮤니티'
+                            }
+                        </p>
+                        <h4>Chatting</h4>
+                        <p style={{ textIndent: '0' }}>
+                            {
+                                '-1:1 채팅 혹은 커뮤니티를 통해 단체 채팅 가능\n-채팅 기록이 DB에 저장되어 과거 채팅 기록 확인 가능\n-Send type을 이용하여 입/퇴장 메시지 발송'
+                            }
+                        </p>
+
                         <h3>Issue & Trouble Shooting</h3>
                         <p>
                             코드를 포함한 정보는{' '}
@@ -358,20 +523,6 @@ const Project = forwardRef<HTMLDivElement, propsType>((props, ref) => {
                                 </p>
                             </>
                         )}
-                        <h3>후기</h3>
-                        <p>
-                            이 프로젝트는 지금까지 공부해 온 React의 지식을 총
-                            정리한 프로젝트라고 생각한다. 기본적인 로그인
-                            Token관리부터 Refresh Token을 이용한 Access Token
-                            재발급, 무한스크롤, 실시간 채팅 등 경험할 수 있는
-                            기능은 거의 다 해본 것 같다.
-                        </p>
-                        <p>
-                            아직 공부를 하고있는 단계라 하드 코딩으로 하나하나
-                            작성하다보니 코드를 추상화하지 못한점이 아쉽다. 차차
-                            리펙토링을 통해 코드를 추상화하여 클린 코드를 만들기
-                            위해 조금 더 공부해야겠다는 생각이 들었다.
-                        </p>
                     </div>
                 </ExplainBox>
             </ProjectLayout>

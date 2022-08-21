@@ -26,7 +26,7 @@ const strech = keyframes`
         height: 0;
     }
     to{
-        height: 90%;
+        height: 70%;
     }
 `;
 export const textSlide = keyframes`
@@ -146,13 +146,15 @@ const Section = styled.section`
                     : props.isWidthSmall
                     ? '240px'
                     : '180px'};
+            word-break: keep-all;
+            text-align: center;
             p {
                 font-size: ${(props: props) =>
                     props.isWidthLarge
-                        ? '20px'
+                        ? '22px'
                         : props.isWidthSmall
-                        ? '15px'
-                        : '12px'};
+                        ? '17px'
+                        : '14px'};
                 cursor: pointer;
             }
         }
@@ -171,7 +173,7 @@ const Education = styled.article`
 const Bar = styled.article`
     position: relative;
     width: 15px;
-    height: 90%;
+    height: 70%;
     background-color: #000000;
     animation: ${strech} 1s ease;
     article:nth-child(1) {
@@ -256,9 +258,9 @@ const EducationContent = styled.article`
     position: relative;
     width: calc(100% - 50px);
     max-width: 500px;
-    height: 90%;
+    height: 70%;
     background-color: #fefaf3;
-
+    font-size: 17px;
     p:nth-child(1) {
         position: absolute;
         top: -25px;

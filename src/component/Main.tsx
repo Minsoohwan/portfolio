@@ -52,12 +52,14 @@ const Section = styled.section`
         }
     }
     div:nth-child(2) {
-        width: ${(props: props) => (props.isWidthSmall ? '200px' : '130px')};
-        height: ${(props: props) => (props.isWidthSmall ? '260px' : '169px')};
+        width: ${(props: props) => (props.isWidthSmall ? '240px' : '200px')};
+        height: ${(props: props) => (props.isWidthSmall ? '260px' : '216px')};
         margin: 80px auto auto auto;
-        background-color: white;
+        background-color: #ffffff;
         background-image: url('/img/민수환_profile.png');
-        background-size: cover;
+        background-size: ${(props: props) =>
+            props.isWidthSmall ? '200px' : '160px'};
+        background-position: center;
         border-radius: 50%;
         animation: ${appear} 1s ease;
     }

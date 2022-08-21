@@ -81,17 +81,31 @@ const Skills = forwardRef<HTMLDivElement, propsType>((props, ref) => {
                 <h1>Skills</h1>
             </div>
             <div ref={box}>
-                <SkillsLogo isWidthSmall={isWidthSmall} src="/img/React.png" />
+                <SkillsLogo
+                    isWidthSmall={isWidthSmall}
+                    src="/img/React.png"
+                    style={{ scale: '1.2' }}
+                />
                 <SkillsLogo
                     isWidthSmall={isWidthSmall}
                     src="/img/typescript.png"
+                    style={{ scale: '1.1' }}
                 />
                 <SkillsLogo
                     isWidthSmall={isWidthSmall}
                     src="/img/reactquery.png"
+                    style={{ scale: '1.5' }}
                 />
-                <SkillsLogo isWidthSmall={isWidthSmall} src="/img/recoil.png" />
-                <SkillsLogo isWidthSmall={isWidthSmall} src="/img/redux.png" />
+                <SkillsLogo
+                    isWidthSmall={isWidthSmall}
+                    src="/img/recoil.png"
+                    style={{ scale: '0.9' }}
+                />
+                <SkillsLogo
+                    isWidthSmall={isWidthSmall}
+                    src="/img/redux.png"
+                    style={{ scale: '0.9' }}
+                />
                 <SkillsLogo isWidthSmall={isWidthSmall} src="/img/github.png" />
                 <SkillsLogo
                     isWidthSmall={isWidthSmall}
