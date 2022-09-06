@@ -108,7 +108,7 @@ const ExplainBox = styled.div`
         }
         a {
             font-weight: bold;
-            color: white;
+            color: blue;
         }
     }
     h3 {
@@ -263,7 +263,7 @@ const Project = forwardRef<HTMLDivElement, propsType>((props, ref) => {
                         {skillsIsOpen.three && (
                             <p>
                                 {
-                                    'JContext API 기반 전역 상태관리 library로 사용법이 간단합니다. Redux의 경우 사용하기 위해 action type, action create function, reducer 등 boiler plate가 많기 때문에 사용이 간편한 Recoil을 채택했습니다. 로그인 시 Token 저장과 Modal의 state를 부모 컴포넌트로 이동, React Query로 받아온 data를 전역으로 사용하기 위하여 사용했습니다.'
+                                    'Context API 기반 전역 상태관리 library로 사용법이 간단합니다. Redux의 경우 사용하기 위해 action type, action create function, reducer 등 boiler plate가 많기 때문에 사용이 간편한 Recoil을 채택했습니다. 로그인 시 Token 저장과 Modal의 state를 부모 컴포넌트로 이동, React Query로 받아온 data를 전역으로 사용하기 위하여 사용했습니다.'
                                 }
                             </p>
                         )}
